@@ -1,0 +1,13 @@
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 08, 2024 - 17:50:09
+Django version 4.2.13, using settings 'newproject.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+
+Reached inside try
+Reached after cart_items
+Reached inside cart_items: <QuerySet [<CartItem: alchemist - 1>]>
+Item: alchemist - 1
+Orders: <QuerySet [<Orders: user3 - 2400>, <Orders: user3 - 1400>, <Orders: user3 - 2400>, <Orders: user3 - 2400>, <Orders: user3 - 3200>, <Orders: user3 - 1400>, <Orders: user3 - 5600>, <Orders: user3 - 4000>, <Orders: user3 - 3000>, <Orders: user3 - 800>]>

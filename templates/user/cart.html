@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+
+    {% if user.is_authenticated %}
+    {% if not cart_items %}
+        <p>Your cart is empty</p>
+    {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Book name</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ item.book.title }}</td>
+                        <td>{{ item.book.author }}</td>
+                        <td>{{ item.book.price }}</td>
+                        <td>
+                            <a href="{% url 'remove_from_cart' item.id %}">Remove</a>
+                        </td>
+                        <td>
+                            {% if item.quantity > 1 %}
+                                <a href="{% url 'decrease_quantity' item.id %}">-</a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <input type="number" name="quantity" value="{{ item.quantity }}" readonly> Quantity
+                        </td>
+                        <td>
+                            {% if item.quantity < item.book.quantity %}
+                            <a href="{% url 'increase_quantity' item.id %}">+</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Total products: {{ total_items }}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Total price: {{ total_price }}</h6>
+                <a href="{% url 'order_cod' %}" class="card-link">Check out as COD</a>
+                
+                <button href="#" class="card-link">Check out with paymentgateway</button>
+
+            </div>
+        </div>
+    {% endif %}
+{% else %}
+    <p>Please <a href="{% url 'login' %}">login</a> to view your cart.</p>
+{% endif %}
+
+</body>
+</html>

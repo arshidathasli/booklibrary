@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+
+    
+</head>
+<body>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+<form action="" method="post">
+
+    {% csrf_token %}
+
+
+    <label for="">Username</label>
+    <input type="text" name="username" id="username" placeholder="Enter the username " required>
+
+    <label for="">First name</label>
+    <input type="text" name="first_name" id="first_name" placeholder="Enter the first_name" required>
+
+    <label for="">Last name</label>
+    <input type="text" name="last_name" id="last_name" placeholder="Enter the last_name" required>
+
+    <label for="">Email</label>
+    <input type="email" name="email" id="email" placeholder="Enter the email" required>
+
+    <label for="">password</label>
+    <input type="password" name="password" id="password" placeholder="Enter the password" required>
+
+    <label for="">Confirm password</label>
+    <input type="password" name="password1" id="password1" placeholder="confirm password" required>
+
+    <input type="submit" value="Register" onclick="showAlert()">
+
+
+
+
+</form>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
